@@ -1,0 +1,170 @@
+[
+  {
+    "id": "7775a482-5787-47d4-8d22-954e0c85e6b0",
+    "name": "KMS Admin",
+    "role": "ADMIN",
+    "roomNumber": "Office",
+    "pin": "2627",
+    "gradeLevel": null
+  },
+  {
+    "id": "8d69c6d0-363e-4fce-869b-d536399ef2ee",
+    "name": "Mr. Sutphin",
+    "role": "ADMIN",
+    "roomNumber": "7777",
+    "pin": "7777",
+    "gradeLevel": null
+  },
+  {
+    "id": "11fc1f5f-fc66-4f6f-a226-229a9027d44c",
+    "name": "Andile Bongweni",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C108",
+    "pin": "0108",
+    "gradeLevel": 6
+  },
+  {
+    "id": "95031acd-75dd-41d3-b756-041e30bcdbb8",
+    "name": "Tashon-Don Muschette",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C324",
+    "pin": "0324",
+    "gradeLevel": 8
+  },
+  {
+    "id": "3d16aa63-5406-4101-9599-5351584dbac6",
+    "name": "Taneshia Moore",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C309",
+    "pin": "0309",
+    "gradeLevel": 8
+  },
+  {
+    "id": "52a3778d-bcd3-4829-b0d1-8fad23796584",
+    "name": "Kendall Nelson",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C308",
+    "pin": "0308",
+    "gradeLevel": 8
+  },
+  {
+    "id": "3584d607-a889-4a47-8d1c-398e8b31f163",
+    "name": "William Sutphin",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C109",
+    "pin": "0109",
+    "gradeLevel": 6
+  },
+  {
+    "id": "3ca46eb9-3539-44bd-b1e9-01313af70f1f",
+    "name": "Tay Yee",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C208",
+    "pin": "0208",
+    "gradeLevel": 7
+  },
+  {
+    "id": "f6f7c1ba-6a12-4c00-b111-00af9260f4fe",
+    "name": "Adrianna Enoch",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C331",
+    "pin": "0331",
+    "gradeLevel": 8
+  },
+  {
+    "id": "435383c3-a595-4655-bb2f-7421972de5a1",
+    "name": "Stacia Baugh-Muschette",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C122",
+    "pin": "0122",
+    "gradeLevel": 6
+  },
+  {
+    "id": "902c5ead-67c3-4175-bd21-ddf2f7cc57ed",
+    "name": "Amber Mack-Little",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C222",
+    "pin": "0222",
+    "gradeLevel": 7
+  },
+  {
+    "id": "59ca2c73-3495-44f8-b05f-5c45e0ae2f65",
+    "name": "Michael Roberts",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C224",
+    "pin": "0224",
+    "gradeLevel": 7
+  },
+  {
+    "id": "3108ae6a-bcbc-4298-a46f-15c08b29bef7",
+    "name": "Michael Berg",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C110",
+    "pin": "0110",
+    "gradeLevel": 6
+  },
+  {
+    "id": "3ad98b08-cd70-4741-9048-43bfb4ddd23b",
+    "name": "Brian Leak",
+    "role": "EC_TEACHER",
+    "roomNumber": "C209",
+    "pin": "0209",
+    "gradeLevel": 7
+  },
+  {
+    "id": "357f32c4-7c3c-4af7-ab0d-a82a35767ea6",
+    "name": "Davida Tanner",
+    "role": "EC_TEACHER",
+    "roomNumber": "C231",
+    "pin": "0231",
+    "gradeLevel": 7
+  },
+  {
+    "id": "6a7c6983-6b12-48cc-8f79-8c8347100d24",
+    "name": "Danielle Sutton",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C322",
+    "pin": "0322",
+    "gradeLevel": 8
+  },
+  {
+    "id": "063d081e-c076-478c-9d48-56848a733355",
+    "name": "Zenaida Dumo",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C131",
+    "pin": "0131",
+    "gradeLevel": 6
+  },
+  {
+    "id": "2d476e36-c040-4211-beed-e9d59b873fac",
+    "name": "Daniel Pagan",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C210",
+    "pin": "0210",
+    "gradeLevel": 7
+  },
+  {
+    "id": "ce6a912f-7232-4459-accf-be6b142ee71c",
+    "name": "Alleen Smith-Roberts",
+    "role": "CORE_TEACHER",
+    "roomNumber": "C310",
+    "pin": "0310",
+    "gradeLevel": 8
+  },
+  {
+    "id": "a69f2d19-bdf9-4358-8a92-423b399ffb43",
+    "name": "Akaysha Henry Dennis",
+    "role": "EC_TEACHER",
+    "roomNumber": "C118",
+    "pin": "0118",
+    "gradeLevel": 8
+  },
+  {
+    "id": "b3838d1e-5364-4599-840c-8581d87bf41c",
+    "name": "Kelly Moran",
+    "role": "EC_TEACHER",
+    "roomNumber": "C220",
+    "pin": "0220",
+    "gradeLevel": 6
+  }
+]

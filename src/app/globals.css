@@ -1,34 +1,29 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* KMS Brand Colors */
+  --kms-purple: #5c2d91;
+  --kms-purple-light: #7b42b9;
+  --kms-purple-dark: #3f1966;
+  
+  --kms-teal: #008080;
+  --kms-teal-light: #20b2aa;
+  --kms-teal-dark: #005959;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  /* Stars / Awards Colors */
+  --star-blue: #3b82f6;
+  --star-red: #ef4444;
+  --star-gold: #fbbf24;
+  --star-green: #22c55e;
+  --star-silver: #9ca3af;
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Theme Defaults (Light Mode Primary) */
+  --bg-primary: #f4f6f8;
+  --bg-secondary: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -37,13 +32,136 @@ body {
   margin: 0;
 }
 
+body {
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(92, 45, 145, 0.08), transparent 30%),
+    radial-gradient(circle at 85% 30%, rgba(0, 128, 128, 0.08), transparent 30%);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--kms-purple), var(--kms-purple-light));
+  color: white;
+  box-shadow: 0 4px 15px rgba(92, 45, 145, 0.4);
+}
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(92, 45, 145, 0.6);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--kms-teal), var(--kms-teal-light));
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 128, 128, 0.4);
+}
+.btn-secondary:hover {
+  box-shadow: 0 6px 20px rgba(0, 128, 128, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseBar {
+  0% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.8; filter: brightness(1.2); box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+@keyframes bounceStar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-pulse-bar {
+  animation: pulseBar 2s infinite ease-in-out;
+}
+
+.animate-bounce-star {
+  display: inline-block;
+  animation: bounceStar 1s infinite ease-in-out;
+}
+
+/* Fun Font Classes */
+.font-bubble {
+  font-family: var(--font-dynapuff), cursive;
+  font-weight: 700;
+}
+
+.font-graffiti {
+  font-family: var(--font-graffiti), cursive;
+  font-weight: 400;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(0,0,0,0.5);
+}
+
+.glow-text {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.4);
 }

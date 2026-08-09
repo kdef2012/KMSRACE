@@ -1,69 +1,94 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function Login() {
+  const [selectedRole, setSelectedRole] = useState('');
+  const [pin, setPin] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!selectedRole || !pin) {
+      setError('Please select a role and enter your PIN.');
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role: selectedRole, pin })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        localStorage.setItem('kms_user', JSON.stringify(data));
+        if (data.role === 'ADMIN') {
+          router.push('/admin');
+        } else {
+          router.push('/teacher');
+        }
+      } else {
+        setError(data.error || 'Login failed');
+      }
+    } catch (err) {
+      setError('An error occurred during login.');
+    }
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.js</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', padding: '1rem' }}>
+      <div className="glass-card animate-fade-in" style={{ width: '100%', maxWidth: '400px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <h1 style={{ color: 'var(--kms-teal-light)' }}>KMS Owls</h1>
+          <p style={{ color: 'var(--text-secondary)' }}>Expectations of Excellence</p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+
+        {error && (
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: 'var(--star-red)', padding: '0.75rem', borderRadius: '8px', marginBottom: '1rem', textAlign: 'center' }}>
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <label style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Role</label>
+            <select 
+              value={selectedRole}
+              onChange={(e) => setSelectedRole(e.target.value)}
+              style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontSize: '1rem' }}
+            >
+              <option value="" style={{ color: 'black' }}>Select Role...</option>
+              <option value="CORE_TEACHER" style={{ color: 'black' }}>Core Teacher</option>
+              <option value="ENCORE_TEACHER" style={{ color: 'black' }}>Encore Teacher</option>
+              <option value="ML_TEACHER" style={{ color: 'black' }}>ML Teacher (Spanish)</option>
+              <option value="EC_TEACHER" style={{ color: 'black' }}>EC Teacher</option>
+              <option value="ADMIN" style={{ color: 'black' }}>Admin</option>
+            </select>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <label style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>4-Digit PIN</label>
+            <input 
+              type="password" 
+              maxLength="4"
+              placeholder="e.g. 0218"
+              value={pin}
+              onChange={(e) => setPin(e.target.value)}
+              style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontSize: '1rem' }}
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </div>
+
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+            Login
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }

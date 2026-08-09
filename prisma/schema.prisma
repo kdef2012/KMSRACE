@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  role       String   // "ADMIN", "CORE_TEACHER", "ENCORE_TEACHER"
+  roomNumber String?
+  pin        String?
+  gradeLevel Int?
+  rosters    Roster[]
+}
+
+model Student {
+  id         String   @id @default(uuid())
+  firstName  String
+  lastName   String
+  gradeLevel Int      // 6, 7, 8
+  rosters    Roster[] @relation("StudentRoster")
+  logs       DailyLog[]
+}
+
+model Roster {
+  id         String   @id @default(uuid())
+  name       String   // "Period 1", "6th A", etc.
+  type       String   // "CORE", "ENCORE"
+  teacherId  String
+  teacher    User     @relation(fields: [teacherId], references: [id])
+  students   Student[] @relation("StudentRoster")
+}
+
+model DailyLog {
+  id          String   @id @default(uuid())
+  studentId   String
+  student     Student  @relation(fields: [studentId], references: [id])
+  date        DateTime @default(now())
+  workHabits  Boolean  @default(false)
+  behavior    Boolean  @default(false)
+  attendance  Boolean  @default(false)
+  punctuality Boolean  @default(false)
+  dressCode   Boolean  @default(false)
+
+  @@unique([studentId, date])
+}
+
+model Settings {
+  id        String @id @default(uuid())
+  goalType  String // "POINTS", "TIME"
+  goalValue String // JSON string or int
+}
