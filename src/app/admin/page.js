@@ -298,20 +298,23 @@ export default function AdminPortal() {
                       </>
                     ) : (
                       <>
-                        <button onClick={() => handleEditTeacher(t)} className="btn" style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,255,255,0.1)', color: 'var(--text-primary)', fontSize: '0.8rem' }}>Edit</button>
-                        <button onClick={() => handleDeleteTeacher(t.id)} className="btn" style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,0,0,0.2)', color: '#ff6b6b', fontSize: '0.8rem' }}>Delete</button>
-                        <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.2)', margin: '0 0.5rem' }}></div>
-                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Change Role:</span>
-                        <select 
-                          value={t.role}
-                          onChange={(e) => handleUpdateRole(t.id, e.target.value)}
-                          style={{ padding: '0.5rem', borderRadius: '4px', background: 'rgba(0,0,0,0.5)', color: 'var(--text-primary)', border: '1px solid rgba(255,255,255,0.2)' }}
-                        >
-                          <option value="CORE_TEACHER">Core Teacher</option>
-                          <option value="ENCORE_TEACHER">Encore Teacher</option>
-                          <option value="EC_TEACHER">EC Teacher</option>
-                          <option value="ADMIN">Admin</option>
-                        </select>
+                        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                          <button onClick={() => handleEditTeacher(t)} className="btn" style={{ padding: '0.25rem 0.75rem', background: 'rgba(0,0,0,0.05)', color: 'var(--text-primary)', fontSize: '0.8rem' }}>Edit</button>
+                          <button onClick={() => handleDeleteTeacher(t.id)} className="btn" style={{ padding: '0.25rem 0.75rem', background: 'rgba(255,0,0,0.1)', color: '#ff6b6b', fontSize: '0.8rem' }}>Delete</button>
+                          <div style={{ width: '1px', height: '24px', background: 'var(--glass-border)', margin: '0 0.5rem' }}></div>
+                          <span style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Change Role:</span>
+                          <select 
+                            value={t.role}
+                            onChange={(e) => handleUpdateRole(t.id, e.target.value)}
+                            style={{ padding: '0.5rem', borderRadius: '4px', background: 'var(--bg-secondary)', color: 'var(--text-primary)', border: '1px solid var(--glass-border)' }}
+                          >
+                            <option value="CORE_TEACHER">Core Teacher</option>
+                            <option value="ENCORE_TEACHER">Encore Teacher</option>
+                            <option value="ML_TEACHER">ML Teacher</option>
+                            <option value="EC_TEACHER">EC Teacher</option>
+                            <option value="ADMIN">Admin</option>
+                          </select>
+                        </div>
                       </>
                     )}
                   </div>
