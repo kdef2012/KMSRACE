@@ -153,10 +153,12 @@ export async function GET() {
 
     return NextResponse.json({ 
       success: true, 
-      message: \Successfully seeded \ new students for Mr. Nelson!\ 
+      message: "Successfully seeded " + totalCreated + " new students for Mr. Nelson!" 
     });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
+
+
