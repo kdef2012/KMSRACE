@@ -55,8 +55,10 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json({ success: true, message: \Successfully moved \ students into Period 1, 2, and 3!\ });
+    return NextResponse.json({ success: true, message: "Successfully moved " + fixed + " students into Period 1, 2, and 3!" });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
+
+
