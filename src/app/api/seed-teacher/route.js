@@ -77,9 +77,10 @@ export async function POST(request) {
       }
     }
 
-    return NextResponse.json({ success: true, message: \Processed \ new student-roster connections for \!\ });
+    return NextResponse.json({ success: true, message: "Processed " + totalCreated + " new student-roster connections for " + teacherName + "!" });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
+
